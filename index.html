@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        function rpsPlay(move){
+            let computerMove = Math.floor(Math.random(0,3));
+
+            switch(computerMove) {
+                case 0:
+                 computerMove = "paper";
+                break;
+                case 1:
+                 computerMove = "rock";
+                break;
+                case 2:
+                 computerMove = "scissors";
+                break;
+                }
+            console.log(computerMove);
+        }
+    </script>
+    document.getElementById("demo").innerHTML = text;
+</body>
+</html>
