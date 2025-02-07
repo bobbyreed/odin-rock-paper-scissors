@@ -3,28 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors - Best of Five!</title>
 </head>
 <body>
     <p id="demo"></p>
     <script>
+        let cMove = "";
+        let pMove = "";
+        let pWins = 0;
+        let cWins = 0;
+        let gameCount = 0;
         function rpsPlay(move){
-            let computerMove = Math.floor(Math.random(0,3));
+            getComputerMove();
+            //console.log(cMove);
+            getPlayerMove();
+        }
 
+        function getComputerMove(){
+            let computerMove = Math.floor((Math.random(0,3) * 10) / 3.33);
+            //Check randomly created number from line above
+            // console.log(computerMove);
             switch(computerMove) {
                 case 0:
-                 computerMove = "paper";
+                 cMove = "paper";
                 break;
                 case 1:
-                 computerMove = "rock";
+                 cMove = "rock";
                 break;
                 case 2:
-                 computerMove = "scissors";
+                 cMove = "scissors";
                 break;
                 }
-            console.log(computerMove);
+            //Check the switch output
         }
+        function newGame(){
+            if(gameCount >= 5){
+                if(pWins > cWins){
+                    alert("Player wins with " + pWins + " wins to the computer's shameful " + cWins + " wins.")
+                }
+                else if(cWins>pWins){
+                    alert("Computer wins with " + cWins + " wins to the player's shameful " + pWins + " wins.")
+                }
+                gameOver();
+            }
+            else{
+                getComputerMove();
+                getPlayerMove();
+            }
+            
+        }
+        function gameOver(){
+            gameCount = 0;
+        }
+        function getPlayerMove(){
+            let playerMove = prompt("Paper, rock, or scissors?");
+            cMove = cMove.toLowerCase();
+                switch(cMove){
+                    case "rock":
+                        alert("You played paper and your opponent played rock. You win!");
+                        pWins ++;
+                        gameCount++;
+                    break;
+                    case "paper":
+                        alert("Double paper. Draw. The worst outcome.");
+                        gameCount++;
+                    break;
+                    case "scissors":
+                        alert("The scissors have cut your paper into confetti. Computer wins.")
+                        cWins++;
+                        gameCount++;
+                    break;
+                }
+                newGame();
+            }
     </script>
-    document.getElementById("demo").innerHTML = text;
 </body>
 </html>
