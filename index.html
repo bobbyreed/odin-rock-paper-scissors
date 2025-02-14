@@ -13,16 +13,12 @@
         let pWins = 0;
         let cWins = 0;
         let gameCount = 0;
-        function rpsPlay(){
-            getComputerMove();
-            //console.log(cMove);
-            getPlayerMove();
-        }
+        let computerMove;
 
         function getComputerMove(){
-            let computerMove = Math.floor((Math.random(0,3) * 10) / 3.33);
+            computerMove = Math.floor((Math.random(0,3) * 10) / 3.33);
             //Check randomly created number from line above
-            // console.log(computerMove);
+                //console.log(computerMove);
             switch(computerMove) {
                 case 0:
                  cMove = "paper";
@@ -48,6 +44,7 @@
             }
             else{
                 getComputerMove();
+                //console.log(cMove);
                 getPlayerMove();
             }
             
@@ -55,52 +52,66 @@
         function gameOver(){
             gameCount = 0;
         }
+
         function getPlayerMove(){
             pMove = prompt("Paper, rock, or scissors?");
             cMove = cMove.toLowerCase();
             pMove = pMove.toLowerCase();
-                switch(cMove, pMove){
-                    case "rock", "paper":
-                        alert("You played paper and your opponent played rock. You win!");
-                        pWins ++;
-                        gameCount++;
-                    break;
-                    case "paper", "paper":
-                        alert("Double paper. Draw. The worst outcome.");
-                        gameCount++;
-                    break;
-                    case "scissors", "paper":
-                        alert("The scissors have cut your paper into confetti. Computer wins.")
-                        cWins++;
-                        gameCount++;
-                    break;
-                    case "rock", "rock":
-                        alert("You played rock and your opponent played rock. Draw. The worst outcome.");
-                        gameCount++;
-                    break;
-                    case "paper", "rock":
-                        alert("Your rock done covered, yo. Computer wins.");
-                        gameCount++;
-                        cWins++;
-                    break;
-                    case "scissors", "rock":
-                        alert("ROCK SMASH SCISSORS! YOU VICTOR!")
-                        pWins++;
-                        gameCount++;
-                    break;
-                    case "rock", "scissors":
-                        alert("You played scissors and your opponent played rock. You lose and have unusable scissors.");
-                        cWins++;
-                        gameCount++;
-                    break;
-                    case "paper", "scissors":
-                        alert("That paper is now confetti. Enjoy your party, computer loser!");
-                        gameCount++;
-                        pWins++;
-                    break;
-                    case "scissors", "scissors":
-                        alert("You played scissors and your opponent played scissors. Draw. The worst outcome.")
-                        gameCount++;
+            //console.log(cMove + " " + pMove);
+                switch(cMove){
+                    case "rock":
+                        switch(pMove){
+                            case "paper":
+                                alert("You played paper and your opponent played rock. You win!");
+                                pWins ++;
+                                gameCount++;
+                            break;
+                            case "rock":
+                                alert("You played rock and your opponent played rock. Draw. The worst outcome.");
+                                gameCount++;
+                            break;
+                            case "scissors":
+                                alert("You played scissors and your opponent played rock. You lose and have unusable scissors.");
+                                cWins++;
+                                gameCount++;
+                            break;
+                        }
+                        break;
+                    case "paper":
+                        switch(pMove){
+                            case "paper":
+                                alert("Double paper. Draw. The worst outcome.");
+                                gameCount++;
+                            break;
+                            case "rock":
+                                alert("Your rock done covered, yo. Computer wins.");
+                                gameCount++;
+                                cWins++;
+                            break;
+                            case "scissors":
+                                alert("That paper is now confetti. Enjoy your party, computer loser!");
+                                gameCount++;
+                                pWins++;
+                            break;
+                        }
+                        break;
+                    case "scissors":
+                        switch(pMove){
+                            case "paper":
+                                alert("The scissors have cut your paper into confetti. Computer wins.")
+                                cWins++;
+                                gameCount++;
+                            break;
+                            case "rock":
+                                alert("ROCK SMASH SCISSORS! YOU VICTOR!")
+                                pWins++;
+                                gameCount++;
+                            break;
+                            case "scissors":
+                                alert("You played scissors and your opponent played scissors. Draw. The worst outcome.")
+                                gameCount++;
+                            break;
+                        }   
                     break;
                 }
                 newGame();
