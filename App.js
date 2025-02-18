@@ -1,3 +1,5 @@
+const darkSwitch = document.querySelector("label");
+
 let cMove = "";
         let pMove = "";
         let pWins = 0;
@@ -22,6 +24,7 @@ let cMove = "";
                 }
             //Check the switch output
         }
+        
         function newGame(){
             if(gameCount >= 5){
                 if(pWins > cWins){
