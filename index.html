@@ -11,26 +11,25 @@
         <div class="left-gameboard">  
             <div class="game-buttons">
                 <label class="dark-switch">
-                    <img src="./public/images/moon.png" height="20" width="20">
+                    <img id="animation" src="./public/images/moon.png" height="20" width="20">
                     <input type ="checkbox">
                     <span class="slider round"></span>
                 </label>
                 <p>Dark/Light Mode Toggle</p>
                 <h1>RPS Classic</h1>
                 <button id="new">New Game</button>
-                <button>Config</button>
-                <button>Reset Data</button>
+                <button id="config">Config</button>
+                <button id="reset">Reset Data</button>
             </div>
         </div>
         <div class="mid-gameboard">
             <div class="scorebaord">
                 <table>
                     <tr>
-                        <th>Wins</th>
-                    </tr>
                         <th></th>
                         <th>Game</th>
                         <th>Match</th>
+                    </tr>
                     <tr>
                        <td>Player:</td>
                        <td id="player-game-wins"></td>
@@ -47,9 +46,9 @@
                 <img src="./public/images/rps.gif" width="auto" height="auto">
             </div>
             <div class="input">
-                <button onclick="">Rock</button>
-                <button>Paper</button>
-                <button>Scissors</button>
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
             </div>
         </div>
         <div class ="right-gameboard">

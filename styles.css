@@ -9,6 +9,7 @@ body{
     background-color: darkslateblue;
     color: aliceblue;
     padding: 20px;
+    outline:auto;
 }
 
 .left-gameboard{
@@ -89,7 +90,7 @@ input:checked + .slider:before{
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    gap: 20px;
+    gap: 30px;
     border: solid;
     border-color: white;
     border-radius: 25%;

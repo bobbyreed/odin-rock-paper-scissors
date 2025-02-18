@@ -1,11 +1,69 @@
 const darkSwitch = document.querySelector("label");
 
+const newGameButton = document.querySelector("#new");
+const configButton = document.querySelector("#config");
+const resetDataButton = document.querySelector("#reset");
+
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+const cWinsText = document.querySelector("#computer-game-wins");
+const cMatchText = document.querySelector("#computer-match-wins");
+const pWinsText = document.querySelector("#player-game-wins");
+const pMatchText = document.querySelector("#player-match-wins");
+
+const animation = document.querySelector("#animation");
+
+newGameButton.addEventListener("click", () =>{
+    newGame();
+});
+
+configButton.addEventListener("click", () =>{
+
+});
+
+resetDataButton.addEventListener("click", () =>{
+    resetData();
+});
+rockButton.addEventListener("click", () =>{
+    pMove = "rock";
+    move();
+});
+paperButton.addEventListener("click", () =>{
+    pMove = "paper";
+    move();
+});
+scissorsButton.addEventListener("click", () =>{
+    pMove = "scissors";
+    move();
+});
+
+function resetData(){
+    pWins, cWins, pMatches, cMatches = 0;
+    scoreboardUpdate();
+}
+
+function scoreboardUpdate(pWins, cWins, pMatches, cMatches){
+    cWinsText.textContent = cWins;
+    cMatchText.textContent = cMatches;
+    pWinsText.textContent = pWins;
+    pMatchText.textContent = pMatches;
+}
+
+function setPMove(pMove, cMove){
+
+}
+
 let cMove = "";
         let pMove = "";
         let pWins = 0;
         let cWins = 0;
+        let pMatches = 0;
+        let cMatches = 0;
         let gameCount = 0;
         let computerMove;
+        let isActive = false;
 
         function getComputerMove(){
             computerMove = Math.floor((Math.random(0,3) * 10) / 3.33);
@@ -24,30 +82,33 @@ let cMove = "";
                 }
             //Check the switch output
         }
-        
+
         function newGame(){
+            scoreboardUpdate(pWins, cWins, pMatches, cMatches);
             if(gameCount >= 5){
                 if(pWins > cWins){
                     alert("Player wins with " + pWins + " wins to the computer's shameful " + cWins + " wins.")
+                    pMatches++;
                 }
                 else if(cWins>pWins){
                     alert("Computer wins with " + cWins + " wins to the player's shameful " + pWins + " wins.")
+                    cMatches++;
                 }
-                gameOver();
+                matchOver();
             }
             else{
                 getComputerMove();
                 //console.log(cMove);
-                getPlayerMove();
             }
-            
         }
-        function gameOver(){
+        function matchOver(){
             gameCount = 0;
+            pWins = 0;
+            cWins = 0;
+            newGame();
         }
 
-        function getPlayerMove(){
-            pMove = prompt("Paper, rock, or scissors?");
+        function move(){
             cMove = cMove.toLowerCase();
             pMove = pMove.toLowerCase();
             //console.log(cMove + " " + pMove);
@@ -109,3 +170,4 @@ let cMove = "";
                 }
                 newGame();
             }
+            
